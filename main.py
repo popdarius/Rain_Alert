@@ -6,6 +6,7 @@ import os
 load_dotenv()
 api_key = os.getenv("API_KEY")
 
+#Add the Latitude/Longitude of any place you want to check
 
 MY_LAT = 57.7089
 MY_LONG = 11.9746
@@ -26,6 +27,7 @@ response = requests.get(OWM_Endpoint, params=parameters)
 response.raise_for_status()
 weather_data = response.json()
 
+#Check if it will rain in the next 24 hours
 will_rain = False
 
 for hour_data in weather_data["list"]:
@@ -43,3 +45,4 @@ if will_rain:
     )
 
     print(message.status)
+
